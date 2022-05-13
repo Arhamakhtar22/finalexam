@@ -1,8 +1,7 @@
 <%- include("_header") -%>
     <h1>Book Import</h1>
-    <h5>Total number of records in the database: <%=totRecs%>
-    </h5>
-    <h5>Select a file with customers for Database Insert</h5>
+    <h5 class = "fw-bold">Total number of records in the database: <b> <%=totRecs%></b></h5>
+    <h5>Select a file with books for Database Insert</h5>
     <form action="/import" method="post" enctype="multipart/form-data">
         <input type="file" name="filename" required><br /><br />
         <input type="submit" id="submit" value="Submit" class="btn btn-success " />
