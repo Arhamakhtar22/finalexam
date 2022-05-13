@@ -1,0 +1,62 @@
+<%- include("_header") -%>
+    <body>
+        <h1 class="form-horizontal">Calculate Sum of a Series</h1>
+        <form name="newForm">
+            <div class="col-md-4 mb-3">
+                <label class="form-label" for="startingnum">Enter Starting Number</label>
+                <input class="form-control" type="number" id="startingnum" name="startingnum" value="" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label" for="endingnum">Enter Ending Number</label>
+                <input class="form-control" type="number" id="endingnum" name="endingnum" value=""
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label" for="increment">Enter Increment</label>
+                <input class="form-control" type="number" id="increment" name="increment" value=""
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Calculate Sum</button>
+            </div>
+        </form>
+        <p id="error"></p>
+    <script>
+        var form = document.forms["newForm"];
+        form.onsubmit = function (e){
+            e.preventDefault();
+            var StartingNumber = document.getElementById("startingnum").value
+            var EndingNumber = document.getElementById("endingnum").value
+            var Increment = document.getElementById("increment").value
+
+            function Sum (StartingNumber, EndingNumber, Increment){
+                if(Number(StartingNumber)>Number(EndingNumber)){
+                    document.getElementById("error").innerText = "Starting number must be less than ending number"
+                } else {
+                    var x = []
+                    for(var i = Number(StartingNumber); i < Number(EndingNumber); i += Number(Increment)){
+                        x.push(i)
+                    }
+                    console.log(x)
+                    sum = x.reduce((a,b) => {
+                        return a + b
+                    })
+                    document.getElementById("error").innerText = `${sum}`
+                 
+                 }
+            }
+            Sum(StartingNumber, EndingNumber, Increment)  
+    }
+    
+    </script>
+    </body>
+    <%- include("_footer") -%>
